@@ -15,7 +15,7 @@ public class Main {
 		
 		
 		// Spiel Variablen
-		String[] gegner = {"Lutz", "Lord Sievers", "Manuel", "Mikail", "Wagler"};
+		String[] gegner = {"SÜßE KATZE", "LORD SIEVERS", "FATBOY MANUEL", "ÖZTÜRK ERDOGAN", "FISCHKOPP WAGLER"};
 		int maxGegnerLeben = 5;
 		int gegnerSchaden = 25;
 		
@@ -29,17 +29,24 @@ public class Main {
 		
 		boolean laufen = true;
 		
-		System.out.println("Willkommen bei Cimcraft III - Legacy of Sievers!");
+		System.out.println("\n\n\n\t"
+				+ ">>> WILLKOMMEN BEI CIMCRAFT III - THE LEGACY OF LORD GALWELAT <<<\n\n");
 		
 		SPIEL:
 			while(laufen) {
-				System.out.println("---------------------------------------------------------");
+				
+				if(gegner.length == 0) {
+					System.out.println("\n\n [][][][][][][] DU HAST ALLE GEGNER BESIEGT! HERZLICHEN GLÜCKWUNSCH! [][][][][][][]\n\n ");
+					break;
+				}
+				
+				System.out.println("\t---------------------------------------------------------\n");
 				
 				//Gegner Leben und Spawn (Zufall)
 				int gegnerLeben = /*rand.nextInt*/maxGegnerLeben;
 				int gegnerNr = rand.nextInt(gegner.length);
 				String feind = gegner[gegnerNr];
-				System.out.println("\t# " + feind + " ist plötzlich im Klassenzimmer aufgetaucht! #\n");
+				System.out.println("\t ### " + feind + " ist plötzlich vor dir aufgetaucht! ###\n");
 				
 				while(gegnerLeben > 0) {
 					System.out.println("\tDeine HP: " + leben);
@@ -59,15 +66,12 @@ public class Main {
 						leben -= schadenNehmen;
 						
 						// ------ Gegner stirbt für immer ------
-						
-						
-						
-						System.out.println("\t> Du triffst " + feind + " für " + schadenMachen + " Schaden!");
-						System.out.println("\t> Du nimmst " + schadenNehmen + " Schaden!");
+						System.out.println("\t> Du triffst " + feind + " und fügst ihm " + schadenMachen + " Schaden zu!");
+						System.out.println("\t> " + feind + " trifft dich und verursacht " + schadenNehmen + " Schaden!\n");
 						
 						if(leben < 1) {
-							System.out.println("\t> Du hast zuviel Schaden genommen, "
-									+ " und bist zu schwach um weiter zu machen!");
+							System.out.println("\t> Du hast zuviel Schaden genommen und liegst "
+									+ "wehrlos auf dem Boden. " + feind + " kommt langsam auf dich zu...");
 							break;
 						}								
 					}
@@ -87,24 +91,24 @@ public class Main {
 					}
 					// FLÜCHTEN
 					else if(input.equals("3")) {
-						System.out.println("\tDu bist vor " + feind + " abgehauen du Pfeife!");
+						System.out.println("\t> Du bist vor " + feind + " abgehauen du Pfeife!");
 					}
 					// UNBEKANNTER BEFEHL
 					else {
-						System.out.println("\tUnbekannter Befehl. Eingabe Wiederholen!.");
+						System.out.println("\t> Unbekannter Befehl. Eingabe Wiederholen!.");
 					}
 				}
 				
 				if(leben < 1) {
-					System.out.println("\tDu wurdest von " + feind + " zerstückelt.\n\n\t\t DU BIST TOT!\n");
+					System.out.println("\t> Du wurdest von " + feind + " zerstückelt.\n\n\n\t\t >>> DU BIST TOT! <<<\n\n");
 					break;
 				}
 				
-				System.out.println("---------------------------------------------------------");
+				System.out.println("---------------------------------------------------------\n");
 				System.out.println(" ###### " + feind + " ist K.O.! ###### ");
 				
 				// Gegner stirbt
-				String[] gegner_temp = new String[gegner.length-1]; //gegner_temp = {"", "", "", "", ""};
+				String[] gegner_temp = new String[gegner.length-1];
 				int i = 0;
 				for(int x=0; x <= gegner.length -1; x++) {
 					if(gegnerNr != x) {
@@ -113,26 +117,27 @@ public class Main {
 					}
 				}
 				
+				// Letzter Gegner besiegt und Spiel erfolgriech abgeschlossen
 				gegner = gegner_temp;
 				
 				//Liste von verbleibenden Gegnern wird angezeigt
 				System.out.println("\n# Folgende Gegner sind noch im Haus: #");
 				for(int x=0; x <= gegner.length -1; x++) {
-					System.out.println("\n\t>" + gegner[x] + "\n");
+					System.out.println("\t>" + gegner[x]);
 				}
 				
 				
 				
-				System.out.println(" # Du hast noch " + leben + " HP übrig! # ");
+				System.out.println("\n # Du hast noch " + leben + " HP übrig! # \n");
 				if(rand.nextInt(100) < heilTrankDropChance) {
 					numHeilTrank++;
 					System.out.println(" # " + feind + " hat ein Heilbier fallen lassen! #");
-					System.out.println(" # Du besitzt nun " + numHeilTrank + " Heilbiere(s). # ");
+					System.out.println(" # Du besitzt nun " + numHeilTrank + " Heilbiere. # \n");
 				}
 				System.out.println("---------------------------------------------------------");
 				System.out.println("Was möchtest du jetzt tun?");
 				System.out.println("1. Weiter kämpfen!");
-				System.out.println("2. Ich habe Angst, ich höre auf.");
+				System.out.println("2. Beenden.");
 				
 				String input = in.nextLine();
 				
@@ -141,17 +146,17 @@ public class Main {
 					input = in.nextLine();
 				}
 				if(input.equals("1")) {
-					System.out.println("Du setzt das Spiel fort!");
+					System.out.println("\n\t> Du setzt das Spiel fort!\n");
 				}
 				else {
-					System.out.println("Du hast Cimdata verlassen!\n");
+					System.out.println("\n\t\t Du hast Cimdata verlassen!\n\n");
 					break;
 				}
 				
 			}
 		
 		System.out.println("###########################################################");
-		System.out.println("################# DANKE FÜR'S SPIELEN! ####################");
+		System.out.println("################## DANKE FÜR'S SPIELEN! ###################");
 		System.out.println("###########################################################");
 		
 		
