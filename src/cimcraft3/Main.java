@@ -36,7 +36,9 @@ public class Main {
 			while(laufen) {
 				
 				if(gegner.length == 0) {
-					System.out.println("\n\n [][][][][][][] DU HAST ALLE GEGNER BESIEGT! HERZLICHEN GLÜCKWUNSCH! [][][][][][][]\n\n ");
+					System.out.println("\n\n[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] ");
+					System.out.println("[][][][][][][] DU HAST ALLE GEGNER BESIEGT! HERZLICHEN GLÜCKWUNSCH! [][][][][][][]");
+					System.out.println("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\n\n ");
 					break;
 				}
 				
@@ -155,9 +157,9 @@ public class Main {
 				
 			}
 		
-		System.out.println("###########################################################");
-		System.out.println("################## DANKE FÜR'S SPIELEN! ###################");
-		System.out.println("###########################################################");
+		System.out.println("##################################################################################");
+		System.out.println("############################## DANKE FÜR'S SPIELEN! ##############################");
+		System.out.println("##################################################################################");
 		
 		
 
