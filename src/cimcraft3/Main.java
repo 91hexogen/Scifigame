@@ -3,11 +3,12 @@ package cimcraft3;
 import java.util.Random;
 import java.util.Scanner;
 
+//Unsere einzige Hauptklasse
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//"System in" ist für den Input
+		//"System in ist für den Input
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		// Random-Generator für zufällige Zahlen
@@ -16,7 +17,7 @@ public class Main {
 		
 		// Spiel Variablen
 		String[] gegner = {"SÜßE KATZE", "LORD SIEVERS", "FATBOY MANUEL", "ÖZTÜRK ERDOGAN", "FISCHKOPP WAGLER"};
-		int maxGegnerLeben = 5;
+		int maxGegnerLeben = 75;
 		int gegnerSchaden = 25;
 		
 		
@@ -27,14 +28,19 @@ public class Main {
 		int heilTrankHeilung = 30;
 		int heilTrankDropChance = 50; // Prozentzahl
 		
+		boolean start = true;
 		boolean laufen = true;
 		
+		
+		
+		// Startinformation
 		System.out.println("\n\n\n\t"
 				+ ">>> WILLKOMMEN BEI CIMCRAFT III - THE LEGACY OF LORD GALWELAT <<<\n\n");
+
 		
-		SPIEL:
+		//SPIEL:
 			while(laufen) {
-				
+				// Beendet das Spiel, wenn alle Gegner tot sind:
 				if(gegner.length == 0) {
 					System.out.println("\n\n[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] ");
 					System.out.println("[][][][][][][] DU HAST ALLE GEGNER BESIEGT! HERZLICHEN GLÜCKWUNSCH! [][][][][][][]");
@@ -42,7 +48,7 @@ public class Main {
 					break;
 				}
 				
-				System.out.println("\t---------------------------------------------------------\n");
+				System.out.println("--------------------------------------------------------------------------\n");
 				
 				//Gegner Leben und Spawn (Zufall)
 				int gegnerLeben = /*rand.nextInt*/maxGegnerLeben;
@@ -86,27 +92,30 @@ public class Main {
 									+ "\n\t> Du hast jetzt " + leben + " HP!"
 									+ "\n\t> Du hast noch " + numHeilTrank + " Heilbiere übrig!");	
 						}
+						// Keine Heiltränke mehr
 						else {
 						System.out.println("\t> Du hast kein Heilbier mehr übrig! "
 								+ "Töte ein paar Gegner. Manchmal lassen sie ein Heilbier fallen!\n");
 						}
 					}
 					// FLÜCHTEN
-					else if(input.equals("3")) {
-						System.out.println("\t> Du bist vor " + feind + " abgehauen du Pfeife!");
+					else if(input.equals("3")) {	
+						System.out.println("-----------------------------------------------------------------\n");
+						System.out.println("\t> Du bist vor " + feind + " abgehauen du Pfeife!\n");
+						break;
 					}
 					// UNBEKANNTER BEFEHL
 					else {
 						System.out.println("\t> Unbekannter Befehl. Eingabe Wiederholen!.");
 					}
 				}
-				
+				// Meldung: Feind X hat dich besiegt
 				if(leben < 1) {
 					System.out.println("\t> Du wurdest von " + feind + " zerstückelt.\n\n\n\t\t >>> DU BIST TOT! <<<\n\n");
 					break;
 				}
 				
-				System.out.println("---------------------------------------------------------\n");
+				System.out.println("-----------------------------------------------------------------\n");
 				System.out.println(" ###### " + feind + " ist K.O.! ###### ");
 				
 				// Gegner stirbt
@@ -129,14 +138,15 @@ public class Main {
 				}
 				
 				
-				
+				// Meldung, wieviel Leben der Spieler noch hat --- Heiltrankdrop
 				System.out.println("\n # Du hast noch " + leben + " HP übrig! # \n");
 				if(rand.nextInt(100) < heilTrankDropChance) {
 					numHeilTrank++;
 					System.out.println(" # " + feind + " hat ein Heilbier fallen lassen! #");
 					System.out.println(" # Du besitzt nun " + numHeilTrank + " Heilbiere. # \n");
 				}
-				System.out.println("---------------------------------------------------------");
+				// Untermenü-Auswahl
+				System.out.println("-----------------------------------------------------------------\n");
 				System.out.println("Was möchtest du jetzt tun?");
 				System.out.println("1. Weiter kämpfen!");
 				System.out.println("2. Beenden.");
@@ -148,15 +158,15 @@ public class Main {
 					input = in.nextLine();
 				}
 				if(input.equals("1")) {
-					System.out.println("\n\t> Du setzt das Spiel fort!\n");
+					System.out.println("\n\t> >>> Du setzt das Spiel fort! <<<\n");
 				}
 				else {
-					System.out.println("\n\t\t Du hast Cimdata verlassen!\n\n");
+					System.out.println("\n\t\t >>> Du hast das Spiel beendet! <<<\n\n");
 					break;
 				}
 				
 			}
-		
+		// Anzeige am Ende
 		System.out.println("##################################################################################");
 		System.out.println("############################## DANKE FÜR'S SPIELEN! ##############################");
 		System.out.println("##################################################################################");
